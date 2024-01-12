@@ -1,5 +1,5 @@
-require "core.settings"
-require "core.maps"
+require("core.settings")
+require("core.colors")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -15,12 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {import = "plugins"},
-    {import = "plugins.lsp"}
 })
+local opts = {}
 
--- local ok, mymod = pcall(require, 'module_with_error')
--- if not ok then
---   print("Module had an error")
--- else
---   mymod.function()
--- end  
+require("lazy").setup(plugins, opts)

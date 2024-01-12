@@ -14,5 +14,6 @@ vim.g.netrw_winsize = 30
 -- vim.opt.wildignore:remove { "node_modules" }
 vim.opt.wildignore:append { '*.o', '*.class', "node_modules", '__pycache__' }
 
--- opt.iskeyword:append("-")
--- vim.keymap.set('n', 'lhs', function() print("real lua function") end)
+-- vim.opt.iskeyword:append("-")
+
+vim.g.leader = " "
