@@ -1,3 +1,4 @@
+vim.g.leader = " "
 require("core.settings")
 require("core.colors")
 

@@ -1,4 +1,3 @@
-print("loading settings")
 vim.opt.rnu = true
 vim.opt.nu = true
 vim.opt.softtabstop = 4
@@ -16,4 +15,4 @@ vim.opt.wildignore:append { '*.o', '*.class', "node_modules", '__pycache__' }
 
 -- vim.opt.iskeyword:append("-")
 
-vim.g.leader = " "
+vim.g.mapleader = " "
