@@ -1,6 +1,4 @@
-vim.g.leader = " "
 require("core.settings")
-require("core.colors")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -13,10 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
-vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({
-	{ import = "plugins" },
-})
-local opts = {}
 
-require("lazy").setup(plugins, opts)
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup({ { import = "plugins" } })
+
+local setup_colors = require("core.colors")
+setup_colors("oxocarbon", "dark")
