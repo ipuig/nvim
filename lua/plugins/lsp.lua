@@ -11,7 +11,7 @@ return {
 		config = function()
 			local mason_lspconfig = require("mason-lspconfig")
 			mason_lspconfig.setup({
-				ensure_installed = { "lua_ls" },
+				ensure_installed = { "lua_ls", "clangd", "jdtls" },
 			})
 		end,
 	},
@@ -26,8 +26,8 @@ return {
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
-			lspconfig.lua_ls.setup({ capabilities = default })
 			lspconfig.clangd.setup({ capabilities = default })
+                        lspconfig.jdtls.setup({ capabilities = default })
 
 			lspconfig.lua_ls.setup({
 				capabilities = default,
