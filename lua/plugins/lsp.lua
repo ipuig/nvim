@@ -19,10 +19,14 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})
+            local default = require("cmp_nvim_lsp").default_capabilities()
+
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+
+            lspconfig.lua_ls.setup({ capabilities = default})
+            lspconfig.clangd.setup({ capabilities = default})
         end
     }
 }
