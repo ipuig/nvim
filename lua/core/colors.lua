@@ -32,8 +32,11 @@ M.setup_colors = function(colorscheme, background)
 	vim.api.nvim_set_hl(0, "CmpItemKindValue", { bg = "none" })
 	vim.api.nvim_set_hl(0, "CmpItemKindText", { bg = "none" })
 	vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "none" })
-        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-        vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = "none" })
 end
 
 return M.setup_colors

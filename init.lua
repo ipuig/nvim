@@ -6,7 +6,7 @@ if not vim.loop.fs_stat(lazypath) then
 		"git",
 		"clone",
 		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
+		"https://github.com/folke/azy.nvim.git",
 		"--branch=stable", -- latest stable release
 		lazypath,
 	})
@@ -16,4 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ { import = "plugins" } })
 
 local setup_colors = require("core.colors")
+local setup_mappings = require("core.maps")
+
 setup_colors("oxocarbon", "dark")
+setup_mappings()
