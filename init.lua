@@ -18,5 +18,5 @@ require("lazy").setup({ { import = "plugins" } })
 local setup_colors = require("core.colors")
 local setup_mappings = require("core.maps")
 
-setup_colors("oxocarbon", "dark")
+setup_colors("melange", "dark")
 setup_mappings()

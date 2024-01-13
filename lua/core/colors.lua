@@ -1,6 +1,6 @@
 M = {}
 
-M.setup_colors = function(colorscheme, background)
+M.setup_colors_when_fucked = function(colorscheme, background)
 	vim.opt.background = background
 	vim.cmd.colorscheme(colorscheme)
 	vim.api.nvim_set_hl(0, "CmpItemKind", { bg = "none" })
@@ -37,6 +37,13 @@ M.setup_colors = function(colorscheme, background)
 	vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
 	vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = "none" })
+end
+
+M.setup_colors = function(colorscheme, background)
+    vim.opt.background = background
+    vim.cmd.colorscheme(colorscheme)
+    vim.api.nvim_set_hl(0, "Comment", { fg = "#7E7E7E" })
+
 end
 
 return M.setup_colors
