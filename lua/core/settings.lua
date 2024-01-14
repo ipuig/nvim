@@ -8,6 +8,7 @@ vim.opt.termguicolors = true
 vim.opt.laststatus = 0
 vim.opt.wrap = false
 vim.opt.smartcase = true
+vim.opt.mouse = ""
 
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.hls = true
