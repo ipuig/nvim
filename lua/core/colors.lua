@@ -43,6 +43,7 @@ M.setup_colors = function(colorscheme, background)
     vim.opt.background = background
     vim.cmd.colorscheme(colorscheme)
     vim.api.nvim_set_hl(0, "Comment", { fg = "#7E7E7E" })
+    vim.api.nvim_set_hl(0, "Normal", { bg = "None" })
 
 end
 

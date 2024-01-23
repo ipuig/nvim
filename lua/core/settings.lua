@@ -6,6 +6,7 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 8
 vim.opt.termguicolors = true
 vim.opt.laststatus = 0
+vim.opt.colorcolumn = "80"
 vim.opt.wrap = false
 vim.opt.smartcase = true
 vim.opt.mouse = ""
@@ -27,3 +28,7 @@ vim.g.mapleader = " "
 vim.g.netrw_banner = 0
 vim.g.netrw_keepdir = 0
 vim.g.netrw_winsize = 30
+
+-- languages
+vim.g.filetype_pl = "prolog"
+
