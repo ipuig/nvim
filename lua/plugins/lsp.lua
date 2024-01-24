@@ -11,7 +11,7 @@ return {
         config = function()
             local mason_lspconfig = require("mason-lspconfig")
             mason_lspconfig.setup({
-                ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "zls" },
+                ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "zls", "pyright" },
             })
         end,
     },
@@ -34,6 +34,7 @@ return {
             lspconfig.rust_analyzer.setup({ capabilities = default })
             lspconfig.zls.setup({ capabilities = default })
             lspconfig.hls.setup({ capabilities = default })
+            lspconfig.pyright.setup({ capabilities = default })
 
             lspconfig.lua_ls.setup({
                 capabilities = default,
