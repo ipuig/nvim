@@ -1,5 +1,11 @@
 return {
     {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function(_, opts) require'lsp_signature'.setup(opts) end
+    },
+    {
         "williamboman/mason.nvim",
         config = function()
             local mason = require("mason")
@@ -11,7 +17,7 @@ return {
         config = function()
             local mason_lspconfig = require("mason-lspconfig")
             mason_lspconfig.setup({
-                ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "zls", "pyright" },
+                ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "zls", "pyright", "gopls" },
             })
         end,
     },
@@ -20,7 +26,18 @@ return {
         config = function()
 
             local lspconfig = require("lspconfig")
+            -- local configs = require("lspconfig.configs")
+
             local default = require("cmp_nvim_lsp").default_capabilities()
+            local on_attach_setup = function(client, bufnr) 
+                require "lsp_signature".on_attach({
+                    bind = true, -- This is mandatory, otherwise border config won't get registered.
+                    handler_opts = {
+                        border = "rounded"
+                    },
+                    hint_prefix = ""
+                }, bufnr)
+            end
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
@@ -29,12 +46,36 @@ return {
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
             vim.keymap.set('n', '<space>ld', vim.diagnostic.open_float, {})
 
-            lspconfig.clangd.setup({ capabilities = default })
-            lspconfig.jdtls.setup({ capabilities = default })
-            lspconfig.rust_analyzer.setup({ capabilities = default })
-            lspconfig.zls.setup({ capabilities = default })
-            lspconfig.hls.setup({ capabilities = default })
-            lspconfig.pyright.setup({ capabilities = default })
+            lspconfig.clangd.setup({ capabilities = default, on_attach = on_attach_setup })
+            lspconfig.rust_analyzer.setup({ capabilities = default, on_attach = on_attach_setup })
+            lspconfig.zls.setup({ capabilities = default, on_attach = on_attach_setup })
+            lspconfig.hls.setup({ capabilities = default, on_attach = on_attach_setup })
+            lspconfig.pyright.setup({ capabilities = default, on_attach = on_attach_setup })
+            lspconfig.gopls.setup({ capabilities = default, on_attach = on_attach_setup })
+
+            -- if not configs.prolog_lsp then
+            --     configs.prolog_lsp = {
+            --         default_config = {
+            --             cmd = { 'swipl', '-g', 'use_module(library(lsp_server)).', '-g', 'lsp_server:main', '-t', 'halt', '--', 'stdio'},
+            --             filetypes = {'prolog'},
+            --             root_dir = lspconfig.util.root_pattern('.git')
+            --         }
+            --     }
+            -- end
+            -- lspconfig.prolog_lsp.setup({ capabilities = default, on_attach = on_attach_setup })
+
+            lspconfig.jdtls.setup({
+                capabilities = default,
+                on_attach = on_attach_setup,
+                settings = {
+                    java = {signatureHelp = {enabled = true}, contentProvider = {preferred = 'fernflower'}}
+                },
+                on_init = function(client)
+                    if client.config.settings then
+                        client.notify('workspace/didChangeConfiguration', {settings = client.config.settings})
+                    end
+                end
+            })
 
             lspconfig.lua_ls.setup({
                 capabilities = default,
