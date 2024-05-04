@@ -25,6 +25,11 @@ return {
 		})
 
 		vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+                vim.keymap.set("n", "gs", builtin.live_grep, {})
+                vim.keymap.set("n", " gc", builtin.git_commits, {})
+                vim.keymap.set("n", " gb", builtin.git_branches, {})
+                vim.keymap.set("n", " gf", builtin.git_files, {})
+                vim.keymap.set("n", " gs", builtin.git_status, {})
 		telescope.load_extension("ui-select")
 	end,
 }
