@@ -14,6 +14,7 @@ local M = {
 
 local modules = {
   ["core.defaults"] = {},
+  ["core.qol.toc"] = { config = { close_after_use = true } },
   ["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
   ["core.integrations.nvim-cmp"] = {},
   ["core.concealer"] = { config = { icon_preset = "diamond" } },
@@ -22,6 +23,13 @@ local modules = {
     config = {
       default_keybinds = true,
       neorg_leader = ",",
+            hook = function (keybinds)
+                keybinds.map("norg", "n", keybinds.leader .. "p", "<cmd>Neorg toc<cr>")
+                keybinds.map("norg", "n", keybinds.leader .. "a", "<cmd>Neorg index<cr>")
+                keybinds.map("norg", "n", keybinds.leader .. keybinds.leader, "<cmd>Neorg<cr>")
+                keybinds.map("norg", "n", keybinds.leader .. "c", "<cmd>Neorg keybind norg core.looking-glass.magnify-code-block<cr>")
+            end
+
     },
   },
   ["core.dirman"] = {
@@ -29,6 +37,7 @@ local modules = {
       workspaces = {
         Notes = "~/Documents/Notes",
         Work = "~/Documents/Work",
+        Ptest = "~/Documents/pentest_practice",
       }, default_workspace = "Notes",
 
     }
@@ -40,5 +49,11 @@ M.opts = {
 
 
 return {
-    { "vhyrro/luarocks.nvim", priority = 1000, config = true, }, M
+    { "vhyrro/luarocks.nvim", priority = 1000, config = true, },
+    {
+        "dhruvasagar/vim-table-mode", config = function ()
+            vim.keymap.set("n", "<space>tt", "<cmd>TableModeToggle<cr>", {})
+        end
+    },
+    M
 }
