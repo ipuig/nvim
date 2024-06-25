@@ -17,7 +17,7 @@ return {
         config = function()
             local mason_lspconfig = require("mason-lspconfig")
             mason_lspconfig.setup({
-                ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "zls", "pyright", "gopls" },
+                ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "zls", "pyright", "gopls", "tsserver" },
             })
         end,
     },
@@ -29,7 +29,7 @@ return {
             -- local configs = require("lspconfig.configs")
 
             local default = require("cmp_nvim_lsp").default_capabilities()
-            local on_attach_setup = function(client, bufnr) 
+            local on_attach_setup = function(client, bufnr)
                 require "lsp_signature".on_attach({
                     bind = true, -- This is mandatory, otherwise border config won't get registered.
                     handler_opts = {
@@ -52,6 +52,8 @@ return {
             lspconfig.hls.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.pyright.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.gopls.setup({ capabilities = default, on_attach = on_attach_setup })
+            -- lspconfig.lemminx.setup({ capabilities = default, on_attach = on_attach_setup })
+            lspconfig.tsserver.setup({ capabilities = default, on_attach = on_attach_setup })
 
             -- if not configs.prolog_lsp then
             --     configs.prolog_lsp = {
