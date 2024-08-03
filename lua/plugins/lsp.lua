@@ -49,10 +49,8 @@ return {
             lspconfig.clangd.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.rust_analyzer.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.zls.setup({ capabilities = default, on_attach = on_attach_setup })
-            lspconfig.hls.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.pyright.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.gopls.setup({ capabilities = default, on_attach = on_attach_setup })
-            -- lspconfig.lemminx.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.tsserver.setup({ capabilities = default, on_attach = on_attach_setup })
 
             -- if not configs.prolog_lsp then
