@@ -1,4 +1,5 @@
 return {
+    {"nvim-treesitter/nvim-treesitter-textobjects"},
     {"nvim-treesitter/nvim-treesitter-context"},
     { "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -9,6 +10,13 @@ return {
                 auto_install = true,
                 highlight = { enable = true },
                 indent = { enable = true },
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true
+                    }
+                }
             })
         end,
-    }}
+    }
+}

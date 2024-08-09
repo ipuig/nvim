@@ -30,5 +30,6 @@ vim.g.netrw_keepdir = 0
 vim.g.netrw_winsize = 30
 
 -- languages
-vim.g.filetype_pl = "prolog"
+vim.g.zig_fmt_autosave = 0
+-- vim.g.filetype_pl = "prolog"
 

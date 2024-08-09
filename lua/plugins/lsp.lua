@@ -44,7 +44,11 @@ return {
             vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
             vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-            vim.keymap.set('n', '<space>ld', vim.diagnostic.open_float, {})
+
+            vim.keymap.set('n', '<leader>dl', vim.diagnostic.open_float, {})
+            vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, {})
+            vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_prev, {})
+            vim.keymap.set('n', '<space>da', vim.diagnostic.setloclist, {})
 
             lspconfig.clangd.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.rust_analyzer.setup({ capabilities = default, on_attach = on_attach_setup })
@@ -52,6 +56,8 @@ return {
             lspconfig.pyright.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.gopls.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.tsserver.setup({ capabilities = default, on_attach = on_attach_setup })
+
+            -- lspconfig.hls.setup({ capabilities = default, on_attach = on_attach_setup })
 
             -- if not configs.prolog_lsp then
             --     configs.prolog_lsp = {
