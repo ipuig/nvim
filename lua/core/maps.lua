@@ -16,6 +16,14 @@ M.setup = function()
         end
     end
 
+    local toggle_spelling = function()
+        if vim.opt.spell:get() then
+            vim.opt.spell = false
+        else
+            vim.opt.spell = true
+        end
+    end
+
     vim.keymap.set("n", "<leader>sh", toggle_hls)
 
     -- Stay in visual mode when indenting)
@@ -28,6 +36,7 @@ M.setup = function()
     vim.keymap.set("n", "J", "mzJ`z")
 
     vim.keymap.set("n", "<leader>i", "<cmd>Neorg workspace Notes<cr>")
+    vim.keymap.set("n", "<c-s>", toggle_spelling)
 
 end
 

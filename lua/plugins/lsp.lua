@@ -49,6 +49,7 @@ return {
             vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, {})
             vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_prev, {})
             vim.keymap.set('n', '<space>da', vim.diagnostic.setloclist, {})
+            vim.keymap.set('n', '<space>dq', vim.diagnostic.setqflist, {})
 
             lspconfig.clangd.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.rust_analyzer.setup({ capabilities = default, on_attach = on_attach_setup })
@@ -57,7 +58,14 @@ return {
             lspconfig.gopls.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.tsserver.setup({ capabilities = default, on_attach = on_attach_setup })
 
-            -- lspconfig.hls.setup({ capabilities = default, on_attach = on_attach_setup })
+
+            lspconfig.hls.setup({
+                capabilities = default,
+                on_attach = on_attach_setup,
+                filetypes = { 'haskell', 'lhaskell', 'cabal' },
+                single_file_support = true,
+                -- root_dir = root_pattern("hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml", ".git")
+            })
 
             -- if not configs.prolog_lsp then
             --     configs.prolog_lsp = {
