@@ -8,14 +8,6 @@ M.setup = function()
     vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
     vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
 
-    local toggle_hls = function()
-        if vim.opt.hls:get() then
-            vim.opt.hls = false
-        else
-            vim.opt.hls = true
-        end
-    end
-
     local toggle_spelling = function()
         if vim.opt.spell:get() then
             vim.opt.spell = false
@@ -23,8 +15,6 @@ M.setup = function()
             vim.opt.spell = true
         end
     end
-
-    vim.keymap.set("n", "<leader>sh", toggle_hls)
 
     -- Stay in visual mode when indenting)
     vim.keymap.set("v", "<", "<gv")
@@ -37,6 +27,14 @@ M.setup = function()
 
     vim.keymap.set("n", "<leader>i", "<cmd>Neorg workspace Notes<cr>")
     vim.keymap.set("n", "<c-s>", toggle_spelling)
+
+
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "netrw", "qf" },
+        callback = function()
+            vim.api.nvim_buf_set_keymap(0, "n", "qq", ":q<CR>", { noremap = true, silent = true })
+        end
+    })
 
 end
 

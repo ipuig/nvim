@@ -17,7 +17,7 @@ return {
         config = function()
             local mason_lspconfig = require("mason-lspconfig")
             mason_lspconfig.setup({
-                ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "zls", "pyright", "gopls", "tsserver" },
+                ensure_installed = { "perlnavigator", "lua_ls", "clangd", "jdtls", "rust_analyzer", "zls", "pyright", "gopls", "ts_ls", "texlab" },
             })
         end,
     },
@@ -31,7 +31,7 @@ return {
             local default = require("cmp_nvim_lsp").default_capabilities()
             local on_attach_setup = function(client, bufnr)
                 require "lsp_signature".on_attach({
-                    bind = true, -- This is mandatory, otherwise border config won't get registered.
+                    bind = true,
                     handler_opts = {
                         border = "rounded"
                     },
@@ -51,12 +51,17 @@ return {
             vim.keymap.set('n', '<space>da', vim.diagnostic.setloclist, {})
             vim.keymap.set('n', '<space>dq', vim.diagnostic.setqflist, {})
 
-            lspconfig.clangd.setup({ capabilities = default, on_attach = on_attach_setup })
+            lspconfig.clangd.setup({
+                capabilities = default,
+                on_attach = on_attach_setup,
+            })
             lspconfig.rust_analyzer.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.zls.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.pyright.setup({ capabilities = default, on_attach = on_attach_setup })
             lspconfig.gopls.setup({ capabilities = default, on_attach = on_attach_setup })
-            lspconfig.tsserver.setup({ capabilities = default, on_attach = on_attach_setup })
+            lspconfig.ts_ls.setup({ capabilities = default, on_attach = on_attach_setup })
+            lspconfig.texlab.setup({ capabilities = default, on_attach = on_attach_setup })
+            lspconfig.perlnavigator.setup({ capabilities = default, on_attach = on_attach_setup })
 
 
             lspconfig.hls.setup({

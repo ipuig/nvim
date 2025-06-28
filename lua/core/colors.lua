@@ -50,7 +50,11 @@ M.setup_colors = function(colorscheme, background)
     -- neorg
     vim.api.nvim_set_hl(0, "@markup.strong", { bold = true })
     vim.api.nvim_set_hl(0, "@markup.italic", { italic = true })
+
     vim.api.nvim_set_hl(0, "@markup.strikethrough", { strikethrough = true })
+    vim.api.nvim_set_hl(0, "@neorg.markup.strikethrough.norg", { strikethrough = true })
+    vim.api.nvim_set_hl(0,"@text.strike", {strikethrough=true})
+
     vim.api.nvim_set_hl(0, "@markup.underline", { underline = true })
     vim.cmd([[ autocmd FileType norg setlocal conceallevel=2 ]])
 end

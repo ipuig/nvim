@@ -28,8 +28,11 @@ vim.g.mapleader = " "
 vim.g.netrw_banner = 0
 vim.g.netrw_keepdir = 0
 vim.g.netrw_winsize = 30
+vim.g.netrw_browse_split = 0
 
 -- languages
 vim.g.zig_fmt_autosave = 0
 -- vim.g.filetype_pl = "prolog"
 
+
+vim.env.TERM = "tmux-256color"
