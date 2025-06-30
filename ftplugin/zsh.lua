@@ -1,5 +1,5 @@
 local run_file = function (dir, file)
-    os.execute(string.format("tmux display-popup -d %s 'perl %s'", dir, file))
+    os.execute(string.format("tmux display-popup -d %s 'zsh %s'", dir, file))
 end
 
 local evaluate_current_file_in_popup = function ()
