@@ -29,12 +29,6 @@ M.setup = function()
     vim.keymap.set("n", "<c-s>", toggle_spelling)
 
 
-    vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "netrw", "qf" },
-        callback = function()
-            vim.api.nvim_buf_set_keymap(0, "n", "qq", ":q<CR>", { noremap = true, silent = true })
-        end
-    })
 
 end
 
